@@ -1,36 +1,29 @@
 #include <stdio.h>
 
 int main(){
-    int n, i,j, num,count = 0;
+    int n,i,j,temp;
     scanf("%d", &n);
 
     int arr[n];
+    int count = n-1;
 
     for (i = 0 ; i < n; i++){
-        scanf("%d", &num);
-        arr[i] = num;
+        scanf("%d", &arr[i]);
     }
 
-    for(i = 0 ; i < n ; i++){
-        for (j = i+1; j < n ; j++)
+    for(i = 0 ; i < n-2; i++){
+        temp = 0;
+        for (j = i+2; j < n; j++)
         {   
-            if (i == j-1 )
-            {   
-                // printf("cpr %d : %d\n",arr[i],arr[j]);
-                count++;
+            if (arr[j-1] > temp){
+                temp = arr[j-1];
+                // printf("%d ",temp);
             }
-            else if (arr[i] > arr[j] && arr[i] > arr[i+1])
-            {
-                // printf("cpr %d : %d\n",arr[i],arr[j]);
+            if (arr[i] > arr[j-1] && arr[j] > arr[j-1]){
+                // printf(" %d | %d\n",arr[i],arr[j]);
                 count++;
-            }
-            else if (arr[i] < arr[j] && arr[i] > arr[i+1])
-            {
-                // printf("cpr %d : %d\n",arr[i],arr[j]);
-                count++;
-                break;
             }
         }
     }
-    printf("%d\n",count);
+    printf("%d",count);
 }
